@@ -24,7 +24,7 @@
             border: 1px solid #e2e8f0;
         }
         .header {
-            background-color: #0ea5e9;
+            background-color: #0f172a;
             padding: 32px 24px;
             text-align: center;
         }
@@ -53,14 +53,14 @@
         }
         .button {
             display: inline-block;
-            background-color: #0ea5e9;
+            background-color: #0f172a;
             color: #ffffff;
             text-decoration: none;
             padding: 12px 32px;
             border-radius: 9999px;
             font-weight: 600;
             font-size: 16px;
-            box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.3);
             transition: all 0.2s ease;
         }
         .footer {
@@ -96,7 +96,7 @@
                 
                 <p style="font-size: 14px; color: #64748b; margin-top: 32px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
                     Jika tombol di atas tidak berfungsi, salin dan tempel tautan berikut ke browser Anda:<br>
-                    <a href="{{ $url }}" style="color: #0ea5e9; word-break: break-all;">{{ $url }}</a>
+                    <a href="{{ $url }}" style="color: #0f172a; word-break: break-all;">{{ $url }}</a>
                 </p>
             @endif
         </div>
