@@ -46,12 +46,16 @@ class WargaController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-        User::create([
+        $warga = User::create([
             ...$validated,
             'password' => bcrypt($validated['password']),
             'role' => 'warga',
             'is_verified' => true,
+            'email_verified_at' => now(),
         ]);
+
+        $wargaRole = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'warga', 'guard_name' => 'web']);
+        $warga->assignRole($wargaRole);
 
         return redirect()->route('admin.warga.index')->with('success', 'Data warga berhasil ditambahkan.');
     }

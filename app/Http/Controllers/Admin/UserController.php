@@ -39,6 +39,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->role,
             'is_verified' => true,
+            'email_verified_at' => now(),
         ]);
 
         $user->assignRole($request->role);

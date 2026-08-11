@@ -50,12 +50,13 @@
 
                     <div class="col-span-2 md:col-span-1">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Peran (Role)</label>
-                        <select name="role" class="w-full appearance-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all focus:border-primary-500 focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:1.25rem_1.25rem] bg-[position:right_0.75rem_center] bg-no-repeat pr-10" required>
-                            <option value="">Pilih Role...</option>
-                            @foreach($roles as $role)
-                                <option value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : '' }}>{{ ucfirst($role->name) }}</option>
-                            @endforeach
-                        </select>
+                        @php
+                            $roleOptions = ['' => 'Pilih Role...'];
+                            foreach($roles as $roleItem) {
+                                $roleOptions[$roleItem->name] = ucfirst($roleItem->name);
+                            }
+                        @endphp
+                        <x-ui.select name="role" :options="$roleOptions" :value="old('role')" />
                         @error('role') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
 
