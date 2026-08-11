@@ -13,15 +13,15 @@ class OtpVerificationMail extends Mailable
     use Queueable, SerializesModels;
 
     public $otpCode;
-    public $message;
+    public $customMessage;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($otpCode, $message = 'Gunakan kode OTP berikut untuk memverifikasi alamat email Anda.')
+    public function __construct($otpCode, $customMessage = 'Gunakan kode OTP berikut untuk memverifikasi alamat email Anda.')
     {
         $this->otpCode = $otpCode;
-        $this->message = $message;
+        $this->customMessage = $customMessage;
     }
 
     /**
