@@ -33,16 +33,9 @@
 
         <div>
             <label class="block text-sm font-medium leading-6 text-slate-300 mb-2 text-center">Kode OTP</label>
-            <div class="flex justify-center gap-2 sm:gap-3">
-                <template x-for="(i, index) in 6" :key="index">
-                    <input type="text" maxlength="1" name="otp[]"
-                           x-ref="'input' + index"
-                           @input="handleInput($event, index)"
-                           @keydown.backspace="handleBackspace($event, index)"
-                           @paste="handlePaste($event)"
-                           class="w-10 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold rounded-xl border border-white/10 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-transparent placeholder-slate-500 focus:border-primary-500 focus:bg-white/10 focus:ring-2 focus:ring-primary-500/50 sm:leading-6 outline-none transition-all duration-200">
-                </template>
-            </div>
+            <input id="otp" name="otp" type="text" maxlength="6" required 
+                   class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-2xl font-bold tracking-[1em] text-white placeholder-slate-500 outline-none ring-primary-500/50 transition-all duration-200 focus:border-primary-500 focus:bg-white/10 focus:ring-2" 
+                   placeholder="------">
         </div>
 
         <div>

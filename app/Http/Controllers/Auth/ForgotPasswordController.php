@@ -62,12 +62,11 @@ class ForgotPasswordController extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:users,email',
-            'otp' => 'required|array|size:6',
-            'otp.*' => 'required|string|size:1',
+            'otp' => 'required|string|size:6',
             'password' => ['required', 'confirmed', Password::defaults()],
         ]);
 
-        $inputOtp = implode('', $request->otp);
+        $inputOtp = $request->otp;
         $user = User::where('email', $request->email)->first();
 
         if ($user->otp_code === $inputOtp && $user->otp_expires_at && $user->otp_expires_at->isFuture()) {
