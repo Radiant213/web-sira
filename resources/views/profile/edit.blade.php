@@ -75,26 +75,28 @@
             @csrf
             @method('PUT')
             
-            <div class="space-y-6 max-w-xl">
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Password Saat Ini</label>
-                    <input type="password" name="current_password" class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:bg-white focus:ring-primary-500" required>
-                    @error('current_password') <p class="mt-2 text-sm text-rose-500">{{ $message }}</p> @enderror
-                </div>
+            <div class="space-y-6">
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div class="col-span-2">
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Password Saat Ini</label>
+                        <input type="password" name="current_password" class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:bg-white focus:ring-primary-500" required>
+                        @error('current_password') <p class="mt-2 text-sm text-rose-500">{{ $message }}</p> @enderror
+                    </div>
 
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Password Baru</label>
-                    <input type="password" name="password" class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:bg-white focus:ring-primary-500" required>
-                    @error('password') <p class="mt-2 text-sm text-rose-500">{{ $message }}</p> @enderror
-                </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Password Baru</label>
+                        <input type="password" name="password" class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:bg-white focus:ring-primary-500" required>
+                        @error('password') <p class="mt-2 text-sm text-rose-500">{{ $message }}</p> @enderror
+                    </div>
 
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Konfirmasi Password Baru</label>
-                    <input type="password" name="password_confirmation" class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:bg-white focus:ring-primary-500" required>
+                    <div class="col-span-2 md:col-span-1">
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Konfirmasi Password Baru</label>
+                        <input type="password" name="password_confirmation" class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:bg-white focus:ring-primary-500" required>
+                    </div>
                 </div>
 
                 <div class="flex justify-end pt-2">
-                    <button type="submit" class="rounded-xl bg-slate-800 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-slate-900 focus:ring-4 focus:ring-slate-500/30 transition-all">
+                    <button type="submit" class="rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-primary-700 focus:ring-4 focus:ring-primary-500/30 transition-all">
                         Perbarui Password
                     </button>
                 </div>
