@@ -25,12 +25,12 @@ class ComplaintController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:2000',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:20480',
         ], [
             'title.required' => 'Judul pengaduan wajib diisi.',
             'description.required' => 'Deskripsi pengaduan wajib diisi.',
             'photo.image' => 'File harus berupa gambar.',
-            'photo.max' => 'Ukuran foto maksimal 2MB.',
+            'photo.max' => 'Ukuran foto maksimal 20MB.',
         ]);
 
         $photoPath = null;

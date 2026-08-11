@@ -47,7 +47,7 @@
                             <img :src="preview" alt="Preview" class="h-48 w-full object-cover">
                         </div>
                     </template>
-                    <p class="text-xs text-slate-400">Format: JPG, JPEG, PNG. Maksimal 2MB.</p>
+                    <p class="text-xs text-slate-400">Format: JPG, JPEG, PNG. Maksimal 20MB.</p>
                 </div>
             </div>
 
