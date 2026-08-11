@@ -87,7 +87,7 @@
         <div class="content">
             <h2 style="font-size: 20px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 16px;">{{ $title }}</h2>
             
-            <p>{{ $message }}</p>
+            <p>{{ $contentMessage }}</p>
 
             @if(!empty($url))
                 <div class="button-container">
