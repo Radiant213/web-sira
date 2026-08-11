@@ -89,7 +89,7 @@
         
         <div class="content">
             <h2>Verifikasi Kode OTP</h2>
-            <p>{{ $message }}</p>
+            <p>{{ $customMessage }}</p>
             
             <div class="otp-box">
                 {{ $otpCode }}

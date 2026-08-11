@@ -7,9 +7,6 @@
     <title>@yield('title', 'SIRA') - Sistem Informasi RT/RW</title>
     <meta name="description" content="SIRA - Sistem Informasi & Pelaporan RT/RW untuk digitalisasi layanan warga">
     <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

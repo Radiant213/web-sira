@@ -14,6 +14,7 @@
 
     <div class="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
         <form action="{{ route('admin.users.store') }}" method="POST" class="p-6 sm:p-8">
+            @csrf
 
                 <div class="grid gap-6 md:grid-cols-2">
                     <div class="col-span-2 md:col-span-1">
