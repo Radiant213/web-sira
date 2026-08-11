@@ -45,7 +45,7 @@
                 <span x-show="!sidebarCollapsed" class="whitespace-nowrap">Data Warga</span>
                 @php $pendingCount = \App\Models\User::where('role','warga')->where('is_verified', false)->count(); @endphp
                 @if($pendingCount > 0)
-                    <span x-show="!sidebarCollapsed" class="ml-auto flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-500 px-1.5 text-[10px] font-bold text-white animate-pulse-soft">{{ $pendingCount }}</span>
+                    <span x-show="!sidebarCollapsed" class="ml-auto flex h-5 min-w-[20px] items-center justify-center rounded-full bg-amber-500 px-1.5 text-center text-[10px] font-bold leading-none text-white animate-pulse-soft">{{ $pendingCount }}</span>
                     <span x-show="sidebarCollapsed" class="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-500 animate-pulse-soft"></span>
                 @endif
             </a>
@@ -74,7 +74,7 @@
                 <span x-show="!sidebarCollapsed" class="whitespace-nowrap">Surat Pengantar</span>
                 @php $suratPending = \App\Models\LetterRequest::pending()->count(); @endphp
                 @if($suratPending > 0)
-                    <span x-show="!sidebarCollapsed" class="ml-auto flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-500 px-1.5 text-[10px] font-bold text-white animate-pulse-soft">{{ $suratPending }}</span>
+                    <span x-show="!sidebarCollapsed" class="ml-auto flex h-5 min-w-[20px] items-center justify-center rounded-full bg-amber-500 px-1.5 text-center text-[10px] font-bold leading-none text-white animate-pulse-soft">{{ $suratPending }}</span>
                     <span x-show="sidebarCollapsed" class="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-500 animate-pulse-soft"></span>
                 @endif
             </a>
@@ -87,7 +87,7 @@
                 <span x-show="!sidebarCollapsed" class="whitespace-nowrap">Pengaduan</span>
                 @php $pengaduanActive = \App\Models\Complaint::where('status','!=','resolved')->count(); @endphp
                 @if($pengaduanActive > 0)
-                    <span x-show="!sidebarCollapsed" class="ml-auto flex h-5 min-w-5 items-center justify-center rounded-full bg-rose-500 px-1.5 text-[10px] font-bold text-white animate-pulse-soft">{{ $pengaduanActive }}</span>
+                    <span x-show="!sidebarCollapsed" class="ml-auto flex h-5 min-w-[20px] items-center justify-center rounded-full bg-rose-500 px-1.5 text-center text-[10px] font-bold leading-none text-white animate-pulse-soft">{{ $pengaduanActive }}</span>
                     <span x-show="sidebarCollapsed" class="absolute right-2 top-2 h-2 w-2 rounded-full bg-rose-500 animate-pulse-soft"></span>
                 @endif
             </a>
