@@ -38,7 +38,7 @@ class OtpController extends Controller
             return redirect()->route('login')->withErrors(['email' => 'Silakan login terlebih dahulu.']);
         }
 
-        if ($user->otp_code === $inputOtp && $user->otp_expires_at && $user->otp_expires_at->isFuture()) {
+        if ((string) $user->otp_code === (string) trim($inputOtp) && $user->otp_expires_at && $user->otp_expires_at->isFuture()) {
             // Valid OTP
             $user->update([
                 'otp_code' => null,

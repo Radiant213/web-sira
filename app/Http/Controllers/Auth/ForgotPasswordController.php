@@ -69,7 +69,7 @@ class ForgotPasswordController extends Controller
         $inputOtp = $request->otp;
         $user = User::where('email', $request->email)->first();
 
-        if ($user->otp_code === $inputOtp && $user->otp_expires_at && $user->otp_expires_at->isFuture()) {
+        if ((string) $user->otp_code === (string) trim($inputOtp) && $user->otp_expires_at && $user->otp_expires_at->isFuture()) {
             // Valid OTP
             $user->update([
                 'password' => Hash::make($request->password),
