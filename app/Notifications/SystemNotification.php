@@ -46,7 +46,7 @@ class SystemNotification extends Notification
             ->subject($this->title)
             ->view('emails.notification', [
                 'title' => $this->title,
-                'message' => $this->message,
+                'contentMessage' => $this->message,
                 'url' => $this->url,
                 'type' => $this->type,
             ]);
