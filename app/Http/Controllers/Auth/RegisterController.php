@@ -64,6 +64,9 @@ class RegisterController extends Controller
             'otp_expires_at' => now()->addMinutes(5),
         ]);
 
+        $wargaRole = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'warga', 'guard_name' => 'web']);
+        $user->assignRole($wargaRole);
+
         Mail::to($user->email)->send(new OtpVerificationMail($otp));
 
         Auth::login($user);
