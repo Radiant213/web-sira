@@ -3,84 +3,67 @@
 @section('title', 'Reset Password')
 
 @section('content')
-<div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="bg-white/80 backdrop-blur-xl px-4 py-8 shadow sm:rounded-2xl sm:px-10 border border-white/20">
-        <div class="mb-8 text-center">
-            <h2 class="text-2xl font-bold tracking-tight text-slate-900">Reset Password</h2>
-            <p class="mt-2 text-sm text-slate-600">
-                Masukkan 6 digit kode OTP yang kami kirimkan ke email Anda, lalu buat password baru.
-            </p>
+    <h2 class="mb-6 text-center text-xl font-bold text-white">Reset Password</h2>
+    <p class="mb-6 text-center text-sm text-slate-400">
+        Masukkan 6 digit kode OTP yang kami kirimkan ke email Anda, lalu buat password baru.
+    </p>
+
+    {{-- Notifikasi Sukses --}}
+    @if(session('success'))
+        <x-ui.alert type="success" class="mb-6 !bg-emerald-500/10 !border-emerald-500/20 !text-emerald-200">
+            {{ session('success') }}
+        </x-ui.alert>
+    @endif
+
+    {{-- Notifikasi Error --}}
+    @if($errors->any())
+        <x-ui.alert type="error" class="mb-6 !bg-red-500/10 !border-red-500/20 !text-red-200">
+            <div class="space-y-1 mt-0.5">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        </x-ui.alert>
+    @endif
+
+    <form action="{{ route('password.update') }}" method="POST" class="space-y-5" x-data="otpInput()">
+        @csrf
+        
+        <input type="hidden" name="email" value="{{ $email }}">
+
+        <div>
+            <label class="block text-sm font-medium leading-6 text-slate-300 mb-2 text-center">Kode OTP</label>
+            <div class="flex justify-center gap-2 sm:gap-3">
+                <template x-for="(i, index) in 6" :key="index">
+                    <input type="text" maxlength="1" name="otp[]"
+                           x-ref="'input' + index"
+                           @input="handleInput($event, index)"
+                           @keydown.backspace="handleBackspace($event, index)"
+                           @paste="handlePaste($event)"
+                           class="w-10 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold rounded-xl border border-white/10 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-transparent placeholder-slate-500 focus:border-primary-500 focus:bg-white/10 focus:ring-2 focus:ring-primary-500/50 sm:leading-6 outline-none transition-all duration-200">
+                </template>
+            </div>
         </div>
 
-        {{-- Notifikasi Sukses --}}
-        @if(session('success'))
-            <div class="mb-6 rounded-xl bg-green-50 p-4 border border-green-200">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <svg class="h-5 w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-green-800">{{ session('success') }}</p>
-                    </div>
-                </div>
-            </div>
-        @endif
+        <div>
+            <label for="password" class="mb-1.5 block text-sm font-medium text-slate-300">Password Baru</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" required 
+                   class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none ring-primary-500/50 transition-all duration-200 focus:border-primary-500 focus:bg-white/10 focus:ring-2">
+        </div>
 
-        {{-- Notifikasi Error --}}
-        @if($errors->any())
-            <div class="mb-6 rounded-xl bg-red-50 p-4 border border-red-200">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <svg class="h-5 w-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-red-800">{{ $errors->first() }}</p>
-                    </div>
-                </div>
-            </div>
-        @endif
+        <div>
+            <label for="password_confirmation" class="mb-1.5 block text-sm font-medium text-slate-300">Konfirmasi Password Baru</label>
+            <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required 
+                   class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none ring-primary-500/50 transition-all duration-200 focus:border-primary-500 focus:bg-white/10 focus:ring-2">
+        </div>
 
-        <form action="{{ route('password.update') }}" method="POST" class="space-y-6" x-data="otpInput()">
-            @csrf
-            
-            <input type="hidden" name="email" value="{{ $email }}">
-
-            <div>
-                <label class="block text-sm font-medium leading-6 text-slate-900 mb-2 text-center">Kode OTP</label>
-                <div class="flex justify-center gap-2 sm:gap-3">
-                    <template x-for="(i, index) in 6" :key="index">
-                        <input type="text" maxlength="1" name="otp[]"
-                               x-ref="'input' + index"
-                               @input="handleInput($event, index)"
-                               @keydown.backspace="handleBackspace($event, index)"
-                               @paste="handlePaste($event)"
-                               class="w-10 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold rounded-xl border-0 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:leading-6">
-                    </template>
-                </div>
-            </div>
-
-            <div>
-                <label for="password" class="block text-sm font-medium leading-6 text-slate-900">Password Baru</label>
-                <div class="mt-2">
-                    <input id="password" name="password" type="password" autocomplete="new-password" required class="block w-full rounded-xl border-0 py-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 px-4 transition-all">
-                </div>
-            </div>
-
-            <div>
-                <label for="password_confirmation" class="block text-sm font-medium leading-6 text-slate-900">Konfirmasi Password Baru</label>
-                <div class="mt-2">
-                    <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required class="block w-full rounded-xl border-0 py-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 px-4 transition-all">
-                </div>
-            </div>
-
-            <div>
-                <button type="submit" class="flex w-full justify-center rounded-xl bg-primary-600 px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-colors">
-                    Reset Password
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
+        <div>
+            <button type="submit" class="mt-4 w-full rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-600/30
+                       transition-all duration-300 hover:from-primary-600 hover:to-primary-800 hover:shadow-primary-600/40 hover:scale-[1.02] active:scale-[0.98]" style="cursor: pointer;">
+                Reset Password
+            </button>
+        </div>
+    </form>
 
 <script>
     function otpInput() {

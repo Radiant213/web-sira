@@ -21,7 +21,7 @@
                     <div class="col-span-2 md:col-span-1">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">NIK (Nomor Induk Kependudukan)</label>
                         <input type="text" name="nik" value="{{ old('nik', $user->nik) }}" 
-                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-800 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-500/20"
+                                   class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400"
                                required>
                         @error('nik') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
@@ -29,7 +29,7 @@
                     <div class="col-span-2 md:col-span-1">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Lengkap</label>
                         <input type="text" name="name" value="{{ old('name', $user->name) }}" 
-                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-800 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-500/20"
+                                   class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400"
                                required>
                         @error('name') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
@@ -37,7 +37,7 @@
                     <div class="col-span-2 md:col-span-1">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
                         <input type="email" name="email" value="{{ old('email', $user->email) }}" 
-                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-800 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-500/20"
+                                   class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400"
                                required>
                         @error('email') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
@@ -45,13 +45,13 @@
                     <div class="col-span-2 md:col-span-1">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Nomor HP</label>
                         <input type="text" name="phone" value="{{ old('phone', $user->phone) }}" 
-                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-800 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-500/20">
+                                   class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400">
                         @error('phone') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
 
                     <div class="col-span-2 md:col-span-1">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Peran (Role)</label>
-                        <select name="role" class="block w-full appearance-none rounded-xl border-slate-200 bg-slate-50 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:bg-white focus:ring-primary-500" required>
+                        <select name="role" class="w-full appearance-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all focus:border-primary-500 focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:1.25rem_1.25rem] bg-[position:right_0.75rem_center] bg-no-repeat pr-10" required>
                             <option value="" disabled>Pilih role...</option>
                             @foreach($roles as $roleItem)
                                 <option value="{{ $roleItem->name }}" {{ old('role', $user->roles->first()->name ?? $user->role) == $roleItem->name ? 'selected' : '' }}>
@@ -64,8 +64,7 @@
 
                     <div class="col-span-2">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Alamat Lengkap</label>
-                        <textarea name="address" rows="3" 
-                                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-500/20">{{ old('address', $user->address) }}</textarea>
+                        <textarea name="address" rows="3" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400">{{ old('address', $user->address) }}</textarea>
                         @error('address') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
                 </div>
@@ -76,14 +75,14 @@
                         <div class="col-span-2 md:col-span-1">
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Password Baru</label>
                             <input type="password" name="password" 
-                                   class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-800 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-500/20">
+                                   class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400">
                             @error('password') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                         </div>
 
                         <div class="col-span-2 md:col-span-1">
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Konfirmasi Password</label>
                             <input type="password" name="password_confirmation" 
-                                   class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-800 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-500/20">
+                                   class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm transition-all placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/20 hover:border-slate-400">
                         </div>
                     </div>
                 </div>
