@@ -89,6 +89,13 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
+    // 2FA Routes
+    Route::get('/2fa', [\App\Http\Controllers\Auth\Admin2FAController::class, 'showVerifyForm'])->name('2fa');
+    Route::post('/2fa', [\App\Http\Controllers\Auth\Admin2FAController::class, 'verify']);
+    Route::post('/2fa/resend', [\App\Http\Controllers\Auth\Admin2FAController::class, 'resend'])->name('2fa.resend');
+});
+
+Route::prefix('admin')->middleware(['auth', 'role:admin', 'admin.2fa'])->name('admin.')->group(function () {
     // Dashboard
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::post('/dashboard/export', [AdminDashboardController::class, 'exportPdf'])->name('dashboard.export');

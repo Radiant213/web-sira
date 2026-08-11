@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => \App\Http\Middleware\RoleMiddleware::class,
             'verified.account' => \App\Http\Middleware\EnsureVerified::class,
+            'admin.2fa' => \App\Http\Middleware\RequireAdmin2FA::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
