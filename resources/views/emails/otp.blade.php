@@ -6,7 +6,7 @@
     <title>Kode Verifikasi OTP</title>
     <style>
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #f8fafc;
             color: #334155;
             line-height: 1.6;
@@ -24,7 +24,7 @@
             border: 1px solid #e2e8f0;
         }
         .header {
-            background-color: #0ea5e9;
+            background-color: #0f172a;
             padding: 32px 24px;
             text-align: center;
         }
@@ -57,18 +57,18 @@
         }
         .otp-box {
             display: inline-block;
-            background-color: #f1f5f9;
-            border: 2px dashed #cbd5e1;
+            background-color: #fff1f2;
+            border: 2px dashed #fda4af;
             border-radius: 12px;
             padding: 16px 32px;
             font-size: 36px;
             font-weight: 800;
             letter-spacing: 8px;
-            color: #0284c7;
+            color: #e11d48;
             margin-bottom: 24px;
         }
         .footer {
-            background-color: #f1f5f9;
+            background-color: #f8fafc;
             padding: 24px;
             text-align: center;
             font-size: 14px;
