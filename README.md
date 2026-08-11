@@ -113,5 +113,5 @@ Jika Anda menggunakan seeder default:
 ---
 
 <p align="center">
-  <i>Dikembangkan dengan ❤️ untuk lingkungan Rukun Tetangga yang lebih modern dan transparan.</i>
+  <i>Copyright © 2026 - Radiant213</i>
 </p>
