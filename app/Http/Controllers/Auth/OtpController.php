@@ -28,11 +28,10 @@ class OtpController extends Controller
     public function verify(Request $request)
     {
         $request->validate([
-            'otp' => 'required|array|size:6',
-            'otp.*' => 'required|string|size:1',
+            'otp' => 'required|string|size:6',
         ]);
 
-        $inputOtp = implode('', $request->otp);
+        $inputOtp = $request->otp;
         $user = $request->user();
 
         if (!$user) {

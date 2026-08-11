@@ -28,10 +28,7 @@
     --color-border: #e2e8f0;
 }
 
-/* Base element styles to fix text color issues */
-input[type="text"], input[type="email"], input[type="password"], input[type="number"], select, textarea {
-    color: #0f172a; /* text-slate-900 */
-}
+
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
