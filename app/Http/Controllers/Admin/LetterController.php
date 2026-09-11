@@ -56,9 +56,12 @@ class LetterController extends Controller
         return redirect()->route('admin.surat.show', $surat)->with('success', 'Surat pengantar telah ditolak.');
     }
 
-    public function print(LetterRequest $surat)
+    public function print(Request $request, LetterRequest $surat)
     {
         $surat->load('user');
+        if ($request->has('preview')) {
+            return view('admin.surat.print', compact('surat'));
+        }
         $pdf = Pdf::loadView('admin.surat.print', compact('surat'));
 
         return $pdf->stream('surat-pengantar-' . $surat->id . '.pdf');
